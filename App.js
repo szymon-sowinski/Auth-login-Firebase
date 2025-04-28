@@ -31,6 +31,26 @@ export default function LoginScreen() {
       });
   };
 
+  const handleRegister = () => {
+    const trimmedEmail = email.trim();
+    const trimmedPassword = password.trim();
+
+    createUserWithEmailAndPassword(auth, trimmedEmail, trimmedPassword)
+      .then((userCredential) => {
+        const user = userCredential.user;
+        console.log('Zarejestrowano!', user.uid);
+        setError('');
+        setIsLoggedIn(true);
+        setUserEmail(user.email);
+        setEmail('');
+        setPassword('');
+      })
+      .catch((err) => {
+        console.error("Rejestracja nie powiodła się: ", err.message);
+        setError(`Rejestracja nie powiodła się: ${err.message}`);
+      });
+  };
+
   return (
     <View style={styles.container}>
       {isLoggedIn ? (
