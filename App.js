@@ -51,6 +51,24 @@ export default function LoginScreen() {
       });
   };
 
+  const handleLogout = () => {
+    signOut(auth)
+      .then(() => {
+        setIsLoggedIn(false);
+        setUserEmail('');
+        setEmail('');
+        setPassword('');
+      })
+      .catch((err) => {
+        console.error('Błąd wylogowania: ', err.message);
+      });
+  };
+
+  const toggleMode = () => {
+    setIsRegistering(!isRegistering);
+    setError('');
+  };
+
   return (
     <View style={styles.container}>
       {isLoggedIn ? (
