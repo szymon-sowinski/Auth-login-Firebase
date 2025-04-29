@@ -18,7 +18,6 @@ export default function LoginScreen() {
     signInWithEmailAndPassword(auth, trimmedEmail, trimmedPassword)
       .then((userCredential) => {
         const user = userCredential.user;
-        console.log('Zalogowany!', user.uid);
         setError('');
         setIsLoggedIn(true);
         setUserEmail(user.email);
@@ -38,7 +37,6 @@ export default function LoginScreen() {
     createUserWithEmailAndPassword(auth, trimmedEmail, trimmedPassword)
       .then((userCredential) => {
         const user = userCredential.user;
-        console.log('Zarejestrowano!', user.uid);
         setError('');
         setIsLoggedIn(true);
         setUserEmail(user.email);
